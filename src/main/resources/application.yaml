@@ -1,0 +1,23 @@
+jwt:
+  expiration: ${JWT_EXPIRATION:3600000}
+  secret: ${JWT_SECRET:GRVzQAOV8H22g0P0KyzjCR23mII2BzziMhI6Wquuu+iR6M28aenwRMazxLFjdU6OHycr9mp+jK5Jn6HNLbSCXQ==}
+
+server:
+  port: 8081
+  error:
+    include-stacktrace: never
+
+
+logging:
+  level:
+    web: debug
+
+spring:
+  application:
+    name: effective-task
+  main:
+    allow-circular-references: true
+  profiles:
+    active: dev
+  cache:
+    type: redis

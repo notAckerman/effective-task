@@ -1,0 +1,44 @@
+services:
+  database:
+    image: mysql:latest
+    container_name: database-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: effective
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init-scripts:/docker-entrypoint-initdb.d
+
+  cache:
+    image: redis:latest
+    container_name: cache-container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+      - cache
+    container_name: 'application'
+    restart: always
+    ports:
+      - 8888:8081
+    environment:
+      MYSQL_JDBC_URL: jdbc:mysql://database:3306/effective
+      SPRING_DATA_REDIS_HOST: cache
+      SPRING_PROFILES_ACTIVE: prod
+
+volumes:
+  mysql_data:
+  redis_data:
