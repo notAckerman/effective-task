@@ -85,3 +85,19 @@ INSERT INTO roles (role)
 VALUES ('ROLE_USER');
 INSERT INTO roles (role)
 VALUES ('ROLE_ADMIN');
+
+INSERT INTO users (created_at, updated_at, email, name, password)
+VALUES
+    (NOW(), NOW(), 'admin@example.com', 'Admin', 'cGFzc3dvcmQ='),
+    (NOW(), NOW(), 'user@example.com', 'User', 'cGFzc3dvcmQ=');
+
+SET @admin_role_id = (SELECT id FROM roles WHERE role = 'ROLE_ADMIN');
+SET @user_role_id = (SELECT id FROM roles WHERE role = 'ROLE_USER');
+
+SET @admin_user_id = (SELECT id FROM users WHERE email = 'admin@example.com');
+SET @user_user_id = (SELECT id FROM users WHERE email = 'user@example.com');
+
+INSERT INTO users_authorities (authorities_id, user_id)
+VALUES
+    (@admin_role_id, @admin_user_id),
+    (@user_role_id, @user_user_id);
