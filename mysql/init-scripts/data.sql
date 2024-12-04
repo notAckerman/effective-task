@@ -88,8 +88,8 @@ VALUES ('ROLE_ADMIN');
 
 INSERT INTO users (created_at, updated_at, email, name, password)
 VALUES
-    (NOW(), NOW(), 'admin@example.com', 'Admin', 'cGFzc3dvcmQ='),
-    (NOW(), NOW(), 'user@example.com', 'User', 'cGFzc3dvcmQ=');
+    (NOW(), NOW(), 'admin@example.com', 'Admin', '$2a$10$YdbFOHE46XgXYvtnNI9O0ugqdXSX4oHUXiJP1KvXMlUBgaJ56S3MG'),
+    (NOW(), NOW(), 'user@example.com', 'User', '$2a$10$YdbFOHE46XgXYvtnNI9O0ugqdXSX4oHUXiJP1KvXMlUBgaJ56S3MG');
 
 SET @admin_role_id = (SELECT id FROM roles WHERE role = 'ROLE_ADMIN');
 SET @user_role_id = (SELECT id FROM roles WHERE role = 'ROLE_USER');

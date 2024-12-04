@@ -1,19 +1,11 @@
 package org.example.effectivetask;
 
-import org.example.effectivetask.model.entity.Priority;
-import org.example.effectivetask.model.entity.Role;
-import org.example.effectivetask.model.entity.Status;
-import org.example.effectivetask.model.enums.TaskPriority;
-import org.example.effectivetask.model.enums.TaskStatus;
-import org.example.effectivetask.model.enums.UserRole;
-import org.example.effectivetask.repository.PriorityRepository;
-import org.example.effectivetask.repository.RoleRepository;
-import org.example.effectivetask.repository.StatusRepository;
+import org.example.effectivetask.model.entity.User;
+import org.example.effectivetask.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
